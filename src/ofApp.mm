@@ -4,8 +4,8 @@
 void ofApp::setup(){	
     ofBackground(0, 0, 0);
     ofEnableAlphaBlending();
-    //touchLoc[0].x = -1000;
-    //touchLoc[0].y = -1000;
+    touchLoc.x = -1000;
+    touchLoc.y = -1000;
      ofTranslate(ofGetWidth()/2, ofGetHeight()/2,0);
 }
 

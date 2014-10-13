@@ -5,11 +5,20 @@ void ofApp::setup(){
     ofBackground(0, 0, 0);
     ofEnableAlphaBlending();//透過度初期設定
     i=0;
+    for (int m = 0; m<=10000; m++) {
+    boxsize[m] = 0;
+    }
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    for(int n = 1; n<=i; n=n+1){
+        boxsize[n] = boxsize[n]+1;
+        if (boxsize[n] >= 100) {
+            boxsize[n] =0;
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -17,8 +26,11 @@ void ofApp::draw(){
     //cam.begin();
     for(int n = 1; n<=i; n=n+1){
         ofSetColor(0,0,250);//色を決定
-        ofRect(touchLoc[n].x, touchLoc[n].y, 100, 100);//四角形を描画
-}//cam.end();
+        box[n].set(boxsize[n]);
+        box[n].setPosition(touchLoc[n].x, touchLoc[n].y, 0);
+        box[n].drawWireframe();
+    }
+    //cam.end();
 }
 
 //--------------------------------------------------------------

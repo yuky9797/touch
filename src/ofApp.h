@@ -23,9 +23,10 @@ class ofApp : public ofxiOSApp {
         void gotMemoryWarning();
         void deviceOrientationChanged(int newOrientation);
 
+    int i;
     ofBoxPrimitive boxone;
     ofEasyCam cam;
-    ofPoint touchLoc;
+    ofPoint touchLoc[10000];
 };
 
 

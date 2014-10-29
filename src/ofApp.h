@@ -25,6 +25,9 @@ class ofApp : public ofxiOSApp {
 
     int i;
     int boxsize[10000];
+    int r;
+    int b;
+    int y;
     ofBoxPrimitive boxone;
     ofEasyCam cam;
     ofPoint touchLoc[10000];

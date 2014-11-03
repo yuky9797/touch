@@ -3,37 +3,37 @@
 //--------------------------------------------------------------
 void ofApp::setup(){	
     ofBackground(0, 0, 0);
+    ofTranslate(ofGetWidth(), ofGetHeight());
     ofEnableAlphaBlending();//透過度初期設定
     i=0;
-    for (int m = 0; m<=10000; m++){
-    boxsize[m] = 0;
-    }//初期設定
-    r =250;
-    b =250;
-    y =250;
+    boxsize = 0;
+    //初期設定
+    bgm1.loadSound("button84.mp3");
+    bgm1.setLoop(false);
+    bgm1.loadSound("button83.mp3");
+    bgm1.setLoop(false);
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    for(int n = 1; n<=i+1; n=n+1){
-        boxsize[n] = boxsize[n]+1;
-        if (boxsize[n] >= 100) {
-            boxsize[n] =0;
-        }//立方体のサイズ変更
+    if(boxsize<=400){
+    boxsize=boxsize+1;
+    }else if(boxsize>400){
+        boxsize=0;
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    for(int n = 1; n<=i; n=n+1){
-        r = 6*n;
-        b = 250-6*n;
-        y = touchLoc[n].x+touchLoc[n].y;
-        ofSetColor(r,b,y);//色を決定
-        box[n].set(boxsize[n]);//大きさを指定
-        box[n].setPosition(touchLoc[n].x, touchLoc[n].y, 0);//位置を指定
-        box[n].drawWireframe();//描画
-    }
+    ofSetColor(200,0,0);//色を決定
+    box1.set(300);//大きさを指定
+    box1.setPosition(0, 0, 0);//位置を指定
+    box1.drawWireframe();//描画
+    ofSetColor(0,0,200);//色を決定
+    box2.set(boxsize);//大きさを指定
+    box2.setPosition(0, 0, 0);//位置を指定
+    box2.drawWireframe();//描画
 }
 
 //--------------------------------------------------------------
@@ -43,14 +43,13 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    if(i<=40){
-    i++;
-    touchLoc[i].set(touch.x, touch.y);//タッチした場所の位置を取得
-    } else if(i>40){
-        i=0;
-    }
-    }
-
+        if(boxsize==300){
+            bgm1.play();
+        }else if(boxsize>250 && boxsize<350)
+        {
+            bgm2.play();
+        }
+}
 //--------------------------------------------------------------
 void ofApp::touchMoved(ofTouchEventArgs & touch){
 

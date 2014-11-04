@@ -3,23 +3,22 @@
 //--------------------------------------------------------------
 void ofApp::setup(){	
     ofBackground(0, 0, 0);
-    ofTranslate(ofGetWidth(), ofGetHeight());
     ofEnableAlphaBlending();//透過度初期設定
     i=0;
     boxsize = 0;
     //初期設定
     bgm1.loadSound("button84.mp3");
     bgm1.setLoop(false);
-    bgm1.loadSound("button83.mp3");
-    bgm1.setLoop(false);
+    bgm2.loadSound("button83.mp3");
+    bgm2.setLoop(false);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if(boxsize<=400){
+    if(boxsize<=300){
     boxsize=boxsize+1;
-    }else if(boxsize>400){
+    }else if(boxsize>300){
         boxsize=0;
     }
 }
@@ -27,7 +26,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofSetColor(200,0,0);//色を決定
-    box1.set(300);//大きさを指定
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+    box1.set(200);//大きさを指定
     box1.setPosition(0, 0, 0);//位置を指定
     box1.drawWireframe();//描画
     ofSetColor(0,0,200);//色を決定
@@ -43,9 +43,9 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-        if(boxsize==300){
+        if(boxsize>=195 && boxsize<=205){
             bgm1.play();
-        }else if(boxsize>250 && boxsize<350)
+        }else if(boxsize>150 && boxsize<250)
         {
             bgm2.play();
         }

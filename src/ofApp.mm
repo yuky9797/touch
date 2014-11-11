@@ -29,14 +29,22 @@ void ofApp::setup(){
     bgm1.setLoop(false);
     bgm2.loadSound("button83.mp3");
     bgm2.setLoop(false);
+    for(i = 0;i < 5000;i++){
+        
+        x[i] = ofRandom(-5000,5000);
+        y[i] = ofRandom(-5000,5000);
+        z[i] = ofRandom(-5000,5000);
+        light[i] = ofRandom(255);
+        
+    }
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if(boxsize<=300){
+    if(boxsize<=250){
     boxsize=boxsize+1;
-    }else if(boxsize>300){
+    }else if(boxsize>250){
         boxsize=0;
     }
 }
@@ -45,7 +53,7 @@ void ofApp::update(){
 void ofApp::draw(){
     ofSetColor(200,0,0);//色を決定
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    box1.set(200);//大きさを指定
+    box1.set(100);//大きさを指定
     box1.setPosition(0, 0, 0);//位置を指定
     box1.drawWireframe();//描画
     ofSetColor(0,0,200);//色を決定
@@ -72,9 +80,9 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-        if(boxsize>=195 && boxsize<=205){
+        if(boxsize>=95 && boxsize<=105){
             bgm1.play();
-        }else if(boxsize>150 && boxsize<250)
+        }else if(boxsize>50 && boxsize<150)
         {
             bgm2.play();
         }

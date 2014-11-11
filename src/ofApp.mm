@@ -1,4 +1,22 @@
 #include "ofApp.h"
+#define NUM 5000
+
+float x[NUM];
+float y[NUM];
+float z[NUM];
+float light[NUM];
+int i;
+float speed;
+
+//間隔
+float spacing = 200;
+//座標の位置情報
+float xx,yy,zz;
+//移動速度
+float movementSpeed = 0.05;
+
+int ii;
+
 
 //--------------------------------------------------------------
 void ofApp::setup(){	
@@ -34,6 +52,17 @@ void ofApp::draw(){
     box2.set(boxsize);//大きさを指定
     box2.setPosition(0, 0, 0);//位置を指定
     box2.drawWireframe();//描画
+    
+    
+    for(i = 0; i < NUM; i++){
+        
+        
+        ofTranslate(x[i],y[i],z[i]);
+        ofSetColor(ofRandom(255), ofRandom(255),ofRandom(255),light[i]);
+        ofDrawSphere(30);
+        ofTranslate(-x[i], -y[i],-z[i]);
+        
+    }
 }
 
 //--------------------------------------------------------------
